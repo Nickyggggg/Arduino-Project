@@ -1,0 +1,35 @@
+#include <Servo.h>
+#define N_LED 12
+
+int sensorPin = 0;
+
+int lowThreshold = 300;
+int highTreshold = 3000;
+Servo nicky;
+// Servo nicky1;
+
+void setup() {
+  nicky.attach(9);
+  // nicky1.attach(8);
+  pinMode(N_LED, OUTPUT);
+  
+
+}
+void loop() {
+  int sensorValue = analogRead(sensorPin);
+  if (sensorValue < lowThreshold) {
+      nicky.write(0);
+      // nicky1.write(360);
+
+    digitalWrite(12, LOW);
+    // delay(1000);
+  }
+
+  if (sensorValue > lowThreshold) {
+      nicky.write(360);
+      // nicky1.write(0);
+
+    digitalWrite(12, HIGH);
+    // delay(1000);
+  }
+}
